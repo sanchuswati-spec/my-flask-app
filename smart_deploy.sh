@@ -1,0 +1,41 @@
+#!/bin/bash
+echo "Detecting active version..."
+
+ACTIVE_PORT=$(grep -oP 'proxy_pass http://127\.0\.0\.1:\K[0-9]+' /etc/nginx/sites-available/default)
+
+echo "Current live port: $ACTIVE_PORT"
+
+if [ "$ACTIVE_PORT" = "5000" ]; then
+
+	NEW_PORT=5001
+	OLD_SERVICE=myapp-blue
+	NEW_SERVICE=myapp-green
+else
+	NEW_PORT=5000
+	OLD_SERVICE=myapp-green
+	NEW_SERVICE=myapp-blue
+
+fi
+
+echo "New version will be deployed on port:$NEW_PORT"
+echo "Starting deployment..."
+echo "Pulling latest code from GitHub..."
+git pull origin main
+echo "Stopping inactive service..."
+sudo systemctl stop $NEW_SERVICE
+
+echo "Updating app code..."
+
+sed -i 's/Green Version Deployed /Auto Deployed version/' app.py
+
+echo "Starting new  version..."
+sudo systemctl start $NEW_SERVICE
+
+echo "Switching traffic..."
+sudo sed -i "s/$ACTIVE_PORT/$NEW_PORT/" /etc/nginx/sites-available/default
+
+sudo systemctl reload nginx
+echo "Stopping old version..."
+sudo systemctl stop $OLD_SERVICE
+
+echo "Deployment completed successfully"
