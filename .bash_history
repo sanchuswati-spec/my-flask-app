@@ -165,3 +165,44 @@ cat /etc/nginx/sites-available/default | grep proxy_pass
 nano smart_deploy.sh
 ./smart_deploy.sh
 exit
+sudo apt update
+sudo apt install git -y
+git --version
+git init
+git add
+git add .
+git commit -m "Initial commit - Flask app"
+nano app.py
+git add .
+git commit -m "Updated app message"
+git push origin main
+git rm -r --cached .ssh
+nano .gitignore
+git add .
+git commit -m "Removed sensitive files and added gitignore"
+git push origin main
+rm -rf .git
+git init
+git add .
+git commit -m "Clean commit without secrets"
+git remote add origin git@github.com:sanchuswati-spec/my-flask-app.git
+git push -u origin main --force
+git branch
+git branch -M main
+git branch
+git push -u origin main --force
+./smart_deploy.sh
+exit
+nano smart_deploy.sh
+git push -u origin main
+git config --global --unset credential.helper
+git push -u origin main
+ssh-keygen -t ed25519 -C "sanchuswati@gmail.com"
+cat ~/.ssh/id_ed25519.pub
+git remote -v
+git remote set-url origin git@github.com:sanchuswati-spec/my-flask-app.git
+git remote -v
+git push -u origin main
+git remote add origin https://github.com/sanchuswati-spec/my-flask-app.git
+git branch -M main
+git push -u origin main
