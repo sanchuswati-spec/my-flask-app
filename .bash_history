@@ -206,3 +206,14 @@ git push -u origin main
 git remote add origin https://github.com/sanchuswati-spec/my-flask-app.git
 git branch -M main
 git push -u origin main
+cat ~/.ssh/id_ed25519
+nano app.py
+git add .
+git commit -m "Trigger CI/CD deployment"
+git push origin main
+git status
+nano .github/workflows/deploy.yml
+git push -u origin main
+nano .github/workflows/deploy.yml
+mkdir -p .github/workflows
+nano .github/workflows/deploy.yml

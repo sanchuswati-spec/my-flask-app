@@ -1,6 +1,6 @@
 </> YAML
 
-name: Deploy to Server
+  name: Deploy to Server
 
 on:
   push:
