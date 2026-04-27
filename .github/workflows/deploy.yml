@@ -20,5 +20,18 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY}}
           script: |
             cd /home/ubuntu
-            ./smart_deploy.sh
+            
+            echo "Pulling latest code..."
+            git pull origin main
+
+            echo "Building Docker image..."
+            docker build -t my-flask-app .
+
+            echo "Stopping old container..."
+            docker stop myapp-container || true
+            docker rm myapp-container || true
+
+            echo "Starting new container..."
+            docker run -d -p 5002:5000 --name myapp-container my-flask-app
+
 

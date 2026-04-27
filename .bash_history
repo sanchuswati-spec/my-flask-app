@@ -217,3 +217,64 @@ git push -u origin main
 nano .github/workflows/deploy.yml
 mkdir -p .github/workflows
 nano .github/workflows/deploy.yml
+nano app.py
+git add .
+git commit -m "Trigger CI/CD again"
+git push origin main
+nano app.py
+git log -1
+cat app.py | grep CI/CD
+cat /etc/nginx/sites-available/default | grep proxy_pass
+curl http://127.0.0.1:5001
+nano smart_deploy.sh
+nano smart_deploy.sh
+./smart_deploy.sh
+sudo apt update
+sudo apt install docker.io -y
+sudo systemctl start docker
+sudo systemctl enable docker
+docker build -t my-flask-app .
+nano dockerfile
+docker build -t my-flask-app .
+docker run -d -p 5002:5000 my-flask-app
+curl http://127.0.0.1:5002
+nano .dockerignore
+docker build -t my-flask-app .
+docker ps
+docker stop d2164292f237
+docker run -d -p 5002:5000 --name myapp-container my-flask-app
+docker ps
+exit
+sudo docker run hello-world
+docker ps -a
+docker run hello-world
+sudo docker run hello-world
+docker ps -a
+sudo docker ps -a
+sudo usermod -aG docker ubuntu
+newgrp docker
+docker ps -a
+docker run -it ubuntu bash
+cd /home/ubuntu
+nano dockerfile
+docker build -t my-flask-app
+docker ps
+sudo systemctl status nginx
+sudo nano /etc/nginx/sites-available/default
+sudo systemctl restart nginx
+docker ps
+docker start myapp-container
+docker ps
+curl http://127.0.0.1:5002
+sudo nano /etc/nginx/sites-available/default
+sudo nginx -t
+sudo systemctl reload nginx
+sudo systemctl status nginx
+exit
+sudo systemctl stop myapp-blue
+sudo systemctl stop myapp-green
+sudo systemctl disable msyapp-blue
+sudo systemctl disable myapp-blue
+sudo systemctl disable myapp-green
+nano .github/workflows/deploy.yml
+exit

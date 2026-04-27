@@ -26,6 +26,8 @@ sudo systemctl stop $NEW_SERVICE
 
 echo "Updating app code..."
 
+d -i 's/Green Version Deployed /Auto Deployed version/' app.py
+
 echo "Starting new  version..."
 sudo systemctl start $NEW_SERVICE
 
