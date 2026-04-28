@@ -19,20 +19,16 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SERVER_SSH_KEY}}
           script: |
+            echo "CI/CD RUNNING ON SERVER "
             cd /home/ubuntu
-            
-            echo "Pulling latest code..."
             git pull origin main
 
-            echo "Building Docker image..."
-            docker build -t my-flask-app .
+           docker build -t my-flask-app .
 
-            echo "Stopping old container..."
-            docker stop myapp-container || true
-            docker rm myapp-container || true
+       docker stop myapp-container || true
+       docker rm myapp-container || true
 
              
-             echo "Starting new Container..."
-             docker run -d -p 5002:5000 --name myapp-container my-flask-app
+        docker run -d -p 5002:5000 --name myapp-container my-flask-app
 
 
