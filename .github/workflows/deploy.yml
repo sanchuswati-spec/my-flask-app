@@ -19,7 +19,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SERVER_SSH_KEY}}
           script: |
-            echo "CI/CD RUNNING ON SERVER "
+            echo "CI/CD RUNNING ON SERVER " > /home/ubuntu/cicd_log.txt
             cd /home/ubuntu
             git pull origin main
 
