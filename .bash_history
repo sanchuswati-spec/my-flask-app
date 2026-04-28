@@ -278,3 +278,16 @@ sudo systemctl disable myapp-blue
 sudo systemctl disable myapp-green
 nano .github/workflows/deploy.yml
 exit
+nano app.py
+git add .
+git commit -m "Test Docker CI/CD"
+git push origin main
+docker ps -a
+docker logs myapp-container
+docker ps
+docker run -d -p 5002:5000 --name myapp-container my-flask-app
+docker ps
+docker start myapp-container
+docker ps
+curl http://127.0.0.1:5002
+nano .github/workflows/deploy.yml
