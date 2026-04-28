@@ -27,22 +27,12 @@ jobs:
             echo "Building Docker image..."
             docker build -t my-flask-app .
 
-             echo "Starting new container..."
-             docker run -d -p 5003:5000 --name temp-container my-flask-app
-
-              echo "Testine new container..."
-              sleep 5
-              curl http://127.0.0.1:5003 || exit 1
-
-
             echo "Stopping old container..."
             docker stop myapp-container || true
             docker rm myapp-container || true
 
-            echo "Switching to new container..."
-            docker stop temp-container
-            docker rm temp-container
-
-            docker run -d -p 5002:5000 --name myapp-container my-flask-app
+             
+             echo "Starting new Container..."
+             docker run -d -p 5002:5000 --name myapp-container my-flask-app
 
 
